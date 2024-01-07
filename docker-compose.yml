@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  grib2json:
+    image: weacast/grib2json
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: grib2json
+    volumes:
+      - "./data:/usr/local/data"
+    environment:
+      - ARGS=--names --data --output /usr/local/data/output.json /usr/local/data/gfs.t00z.pgrb2.0p25.f000.grib2
